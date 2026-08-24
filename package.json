@@ -1,0 +1,32 @@
+{
+  "name": "ritesh-portfolio",
+  "version": "2.0.0",
+  "description": "⚡ Exciting interactive portfolio with games, dev tools, terminal, and visual playground",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve . -l 3000",
+    "build": "echo 'No build needed - vanilla JS magic ✨'",
+    "preview": "npx serve . -l 3000",
+    "lint": "echo 'LGTM!'"
+  },
+  "keywords": [
+    "portfolio",
+    "interactive",
+    "games",
+    "devtools",
+    "terminal",
+    "visualization",
+    "pwa",
+    "vanilla-js"
+  ],
+  "author": "Ritesh <ritesh@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riteshkumarmaurya42-bit/Ritesh.git"
+  },
+  "bugs": {
+    "url": "https://github.com/riteshkumarmaurya42-bit/Ritesh/issues"
+  },
+  "homepage": "https://riteshkumarmaurya42-bit.github.io/Ritesh"
+}

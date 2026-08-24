@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Lost in Space</title>
+<link rel="stylesheet" href="css/style.css">
+<style>body{cursor:auto;display:grid;place-items:center;min-height:100vh;text-align:center;padding:20px}.cursor,.cursor-dot{display:none}h1{font-size:clamp(80px,20vw,200px);line-height:0.8;letter-spacing:-10px;background:linear-gradient(90deg,#7c3aed,#06ffa5);-webkit-background-clip:text;-webkit-text-fill-color:transparent}</style>
+</head>
+<body>
+<div>
+  <h1>404</h1>
+  <p style="font-size:24px;margin:20px 0">Oops! You wandered into the void.</p>
+  <p style="color:#9a9ab0;max-width:400px;margin:0 auto 32px">This page doesn't exist. But hey, while you're here — try the Konami Code or explore the exciting features!</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a href="index.html" class="btn btn-primary">← Back Home</a>
+    <a href="features/terminal.html" class="btn btn-ghost">Open Terminal ></a>
+    <a href="features/games.html" class="btn btn-ghost">Play Games 🎮</a>
+  </div>
+  <div style="margin-top:40px;font-family:JetBrains Mono;font-size:12px;color:#9a9ab0">Lost? Try: <code style="background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:4px">↑ ↑ ↓ ↓ ← → ← → B A</code></div>
+</div>
+<canvas id="particle-canvas" style="position:fixed;inset:0;z-index:-1"></canvas>
+<script src="js/particles.js"></script>
+</body>
+</html>

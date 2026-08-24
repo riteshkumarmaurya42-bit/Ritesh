@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://riteshkumarmaurya42-bit.github.io/Ritesh/sitemap.xml
