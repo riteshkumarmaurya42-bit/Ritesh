@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dev Tools Hub — Ritesh</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+body{cursor:auto} .cursor,.cursor-dot{display:none} a,button{cursor:pointer}
+.tools-nav{padding:20px 8%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,10,15,0.8);backdrop-filter:blur(20px);z-index:10}
+.tool-grid{display:grid;grid-template-columns:250px 1fr;min-height:calc(100vh - 70px)}
+.sidebar{border-right:1px solid var(--border);padding:24px;background:var(--bg2)}
+.sidebar h3{font-size:12px;font-family:'JetBrains Mono';color:var(--text2);letter-spacing:1px;margin:20px 0 10px;text-transform:uppercase}
+.sidebar button{width:100%;text-align:left;padding:10px 14px;border-radius:10px;border:1px solid transparent;background:transparent;color:var(--text2);font-family:inherit;font-size:14px;transition:.2s;margin-bottom:4px}
+.sidebar button.active, .sidebar button:hover{background:var(--card);border-color:var(--border);color:var(--text)}
+.tool-area{padding:32px;overflow:auto}
+.tool-panel{display:none} .tool-panel.active{display:block}
+.qr-box{display:grid;place-items:center;padding:40px;background:var(--bg2);border-radius:20px;border:1px solid var(--border);margin-top:20px}
+@media(max-width:800px){.tool-grid{grid-template-columns:1fr}.sidebar{border-right:none;border-bottom:1px solid var(--border)}}
+</style>
+</head>
+<body>
+<div class="tools-nav">
+  <div style="display:flex;align-items:center;gap:12px"><div style="font-weight:700">🧰 DevTools Hub</div><span style="font-size:11px;background:var(--card);border:1px solid var(--border);padding:2px 8px;border-radius:20px;font-family:JetBrains Mono">v2.1 • 100% Offline</span></div>
+  <a href="../index.html" class="btn btn-ghost" style="padding:8px 16px;font-size:13px">← Portfolio</a>
+</div>
+<div class="tool-grid">
+  <div class="sidebar">
+    <h3>Generators</h3>
+    <button class="active" data-tool="qr">📱 QR Code Generator</button>
+    <button data-tool="password">🔐 Password Generator</button>
+    <button data-tool="color">🎨 Color Palette</button>
+    <button data-tool="uuid">🆔 UUID / Hash</button>
+    <h3>Formatters</h3>
+    <button data-tool="json">🧩 JSON Formatter</button>
+    <button data-tool="base64">🔤 Base64 Encode</button>
+    <button data-tool="markdown">📝 Markdown Preview</button>
+    <h3>Utilities</h3>
+    <button data-tool="regex">🔍 Regex Tester</button>
+    <button data-tool="diff">📊 Text Diff</button>
+  </div>
+  <div class="tool-area">
+    <!-- QR -->
+    <div class="tool-panel active" id="qr">
+      <h2>QR Code Generator</h2><p style="color:var(--text2);margin:8px 0 20px">Generate QR codes instantly — no server, no tracking.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px">
+        <input id="qrInput" class="input" placeholder="https://example.com or any text" value="https://github.com/riteshkumarmaurya42-bit/Ritesh">
+        <select id="qrSize" class="input"><option value="200">200px</option><option value="300" selected>300px</option><option value="400">400px</option></select>
+      </div>
+      <div class="qr-box"><canvas id="qrCanvas"></canvas><div style="margin-top:16px;display:flex;gap:10px"><button class="btn btn-primary" onclick="downloadQR()">Download PNG</button><button class="btn btn-ghost" onclick="genQR()">Regenerate</button></div></div>
+    </div>
+    <!-- Password -->
+    <div class="tool-panel" id="password">
+      <h2>Password Generator</h2>
+      <div style="max-width:600px;margin-top:20px">
+        <div style="display:flex;gap:10px"><input id="pwdOut" class="input" readonly style="font-family:JetBrains Mono"><button class="btn btn-primary" onclick="copyPwd()">Copy</button></div>
+        <div style="margin-top:20px;display:grid;gap:16px">
+          <div><label>Length: <span id="pwdLenVal">16</span></label><input type="range" id="pwdLen" min="6" max="64" value="16" style="width:100%"></div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap"><label><input type="checkbox" id="pwdUpper" checked> Uppercase</label><label><input type="checkbox" id="pwdLower" checked> Lowercase</label><label><input type="checkbox" id="pwdNum" checked> Numbers</label><label><input type="checkbox" id="pwdSym" checked> Symbols</label></div>
+          <button class="btn btn-ghost" onclick="genPwd()">Generate New →</button>
+          <div id="pwdStrength" style="height:6px;background:var(--bg3);border-radius:100px;overflow:hidden"><div id="pwdStrengthFill" style="height:100%;width:50%;background:linear-gradient(90deg,#f59e0b,#ef4444)"></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- Color -->
+    <div class="tool-panel" id="color">
+      <h2>Color Palette Generator</h2>
+      <div style="margin-top:20px">
+        <div style="display:flex;gap:12px;align-items:center"><input type="color" id="colorPick" value="#7c3aed" style="width:60px;height:44px;border-radius:12px;border:1px solid var(--border)"><button class="btn btn-primary" onclick="genPalette()">Generate Palette</button><button class="btn btn-ghost" onclick="randomColor()">Random 🎲</button></div>
+        <div id="palette" style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:24px"></div>
+        <div id="colorExport" style="margin-top:24px;background:var(--bg2);padding:16px;border-radius:12px;font-family:JetBrains Mono;font-size:12px;white-space:pre-wrap"></div>
+      </div>
+    </div>
+    <!-- JSON -->
+    <div class="tool-panel" id="json">
+      <h2>JSON Formatter & Validator</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px">
+        <div><label style="font-family:JetBrains Mono;font-size:12px">Input</label><textarea id="jsonIn" class="input" style="min-height:300px;font-family:JetBrains Mono">{ "name": "Ritesh", "awesome": true, "skills": ["JS","Python"] }</textarea></div>
+        <div><label style="font-family:JetBrains Mono;font-size:12px">Output</label><pre id="jsonOut" style="background:var(--bg2);padding:16px;border-radius:12px;min-height:300px;overflow:auto;border:1px solid var(--border)"></pre></div>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:10px"><button class="btn btn-primary" onclick="formatJSON()">Format ✨</button><button class="btn btn-ghost" onclick="minifyJSON()">Minify</button><button class="btn btn-ghost" onclick="copyJSON()">Copy</button></div>
+    </div>
+    <!-- Base64 -->
+    <div class="tool-panel" id="base64">
+      <h2>Base64 Encoder / Decoder</h2>
+      <div style="display:grid;gap:16px;max-width:800px;margin-top:20px">
+        <textarea id="b64in" class="input" placeholder="Enter text..." style="min-height:120px">Hello Ritesh! ⚡</textarea>
+        <div style="display:flex;gap:10px"><button class="btn btn-primary" onclick="encodeB64()">Encode →</button><button class="btn btn-ghost" onclick="decodeB64()">← Decode</button></div>
+        <textarea id="b64out" class="input" placeholder="Output..." style="min-height:120px"></textarea>
+      </div>
+    </div>
+    <!-- Markdown -->
+    <div class="tool-panel" id="markdown">
+      <h2>Markdown Live Preview</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px">
+        <textarea id="mdIn" class="input" style="min-height:400px;font-family:JetBrains Mono"># Hello Ritesh ⚡
+
+## Features
+- **Bold** and *italic*
+- `inline code`
+- [Link](https://github.com)
+
+```js
+const awesome = true;
+console.log("This is awesome to do this!");
+```
+
+> Build cool stuff that matters.
+</textarea>
+        <div id="mdOut" style="background:var(--bg2);padding:20px;border-radius:12px;border:1px solid var(--border);min-height:400px"></div>
+      </div>
+    </div>
+    <!-- UUID -->
+    <div class="tool-panel" id="uuid">
+      <h2>UUID & Hash Generator</h2>
+      <div style="max-width:600px;margin-top:20px;display:grid;gap:16px">
+        <div><label>UUID v4</label><div style="display:flex;gap:10px;margin-top:8px"><input id="uuidOut" class="input" readonly><button class="btn btn-ghost" onclick="genUUID()">New</button></div></div>
+        <div><label>SHA-256 Hash</label><input id="hashIn" class="input" placeholder="Enter text to hash" style="margin-top:8px"><pre id="hashOut" style="margin-top:10px;background:var(--bg2);padding:12px;border-radius:8px;font-family:JetBrains Mono;font-size:12px;word-break:break-all"></pre></div>
+      </div>
+    </div>
+    <!-- Regex -->
+    <div class="tool-panel" id="regex">
+      <h2>Regex Tester</h2>
+      <div style="max-width:800px;margin-top:20px;display:grid;gap:16px">
+        <div style="display:flex;gap:10px"><input id="regexPat" class="input" placeholder="Pattern, e.g. \b\w+@\w+\.\w+\b" value="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"><input id="regexFlags" class="input" placeholder="flags" value="g" style="max-width:80px"></div>
+        <textarea id="regexText" class="input" style="min-height:120px" placeholder="Test string...">Contact me at ritesh@example.com or test@test.io — let's talk!</textarea>
+        <div id="regexOut" style="background:var(--bg2);padding:16px;border-radius:12px;border:1px solid var(--border);min-height:80px"></div>
+      </div>
+    </div>
+    <!-- Diff -->
+    <div class="tool-panel" id="diff">
+      <h2>Text Diff Checker</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px">
+        <textarea id="diffA" class="input" style="min-height:200px" placeholder="Original text">Hello World
+This is awesome
+Ritesh codes</textarea>
+        <textarea id="diffB" class="input" style="min-height:200px" placeholder="Modified text">Hello World!
+This is awesome to do this.
+Ritesh builds amazing stuff</textarea>
+      </div>
+      <button class="btn btn-primary" style="margin-top:16px" onclick="checkDiff()">Compare →</button>
+      <pre id="diffOut" style="margin-top:16px;background:var(--bg2);padding:16px;border-radius:12px;white-space:pre-wrap"></pre>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script>
+// Tab switching
+document.querySelectorAll('.sidebar button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.sidebar button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+    document.getElementById(btn.dataset.tool).classList.add('active');
+  });
+});
+
+// QR
+function genQR(){
+  const text = document.getElementById('qrInput').value || 'https://github.com';
+  const canvas = document.getElementById('qrCanvas');
+  const size = parseInt(document.getElementById('qrSize').value);
+  canvas.width=size; canvas.height=size;
+  QRCode.toCanvas(canvas, text, {width:size, color:{dark:'#0a0a0f', light:'#ffffff'}}, err=>{ if(err) console.error(err); });
+}
+function downloadQR(){
+  const c = document.getElementById('qrCanvas');
+  const a = document.createElement('a'); a.download='qr-code.png'; a.href=c.toDataURL(); a.click();
+}
+document.getElementById('qrInput').addEventListener('input', genQR);
+document.getElementById('qrSize').addEventListener('change', genQR);
+genQR();
+
+// Password
+function genPwd(){
+  const len = parseInt(document.getElementById('pwdLen').value);
+  const upper = document.getElementById('pwdUpper').checked;
+  const lower = document.getElementById('pwdLower').checked;
+  const num = document.getElementById('pwdNum').checked;
+  const sym = document.getElementById('pwdSym').checked;
+  let chars=''; if(upper) chars+='ABCDEFGHIJKLMNOPQRSTUVWXYZ'; if(lower) chars+='abcdefghijklmnopqrstuvwxyz'; if(num) chars+='0123456789'; if(sym) chars+='!@#$%^&*()_+-=[]{}|;:,.<>?';
+  if(!chars) chars='abcdefghijklmnopqrstuvwxyz';
+  let pwd=''; for(let i=0;i<len;i++) pwd+=chars[Math.floor(Math.random()*chars.length)];
+  document.getElementById('pwdOut').value=pwd;
+  const strength = Math.min(100, len*4 + (upper?10:0)+(lower?10:0)+(num?10:0)+(sym?15:0));
+  document.getElementById('pwdStrengthFill').style.width=strength+'%';
+  document.getElementById('pwdStrengthFill').style.background = strength<40 ? '#ef4444' : strength<70 ? '#f59e0b' : '#06ffa5';
+}
+function copyPwd(){ navigator.clipboard.writeText(document.getElementById('pwdOut').value); }
+document.getElementById('pwdLen').addEventListener('input', e=>{ document.getElementById('pwdLenVal').textContent=e.target.value; genPwd(); });
+['pwdUpper','pwdLower','pwdNum','pwdSym'].forEach(id=>document.getElementById(id).addEventListener('change', genPwd));
+genPwd();
+
+// Color
+function hslToHex(h,s,l){ l/=100; const a=s*Math.min(l,1-l)/100; const f=n=>{const k=(n+h/30)%12; const color=l-a*Math.max(Math.min(k-3,9-k,1),-1); return Math.round(255*color).toString(16).padStart(2,'0');}; return `#${f(0)}${f(8)}${f(4)}`; }
+function genPalette(){
+  const base = document.getElementById('colorPick').value;
+  const r=parseInt(base.slice(1,3),16), g=parseInt(base.slice(3,5),16), b=parseInt(base.slice(5,7),16);
+  const palette = document.getElementById('palette'); palette.innerHTML='';
+  const colors=[];
+  for(let i=0;i<5;i++){
+    const factor = (i-2)*0.2;
+    const nr=Math.min(255,Math.max(0,r+factor*100)), ng=Math.min(255,Math.max(0,g+factor*100)), nb=Math.min(255,Math.max(0,b+factor*100));
+    const hex='#'+[nr,ng,nb].map(x=>Math.round(x).toString(16).padStart(2,'0')).join('');
+    colors.push(hex);
+    const div=document.createElement('div'); div.style.background=hex; div.style.height='120px'; div.style.borderRadius='12px'; div.style.display='grid'; div.style.placeItems='end center'; div.style.padding='8px'; div.style.color= (nr+ng+nb)/3>128?'#000':'#fff'; div.style.fontFamily='JetBrains Mono'; div.style.fontSize='11px'; div.textContent=hex; div.style.cursor='pointer'; div.onclick=()=>{navigator.clipboard.writeText(hex); div.textContent='Copied!'; setTimeout(()=>div.textContent=hex,800)}; palette.appendChild(div);
+  }
+  document.getElementById('colorExport').textContent=`/* CSS Variables */\n:root{\n  --primary: ${colors[2]};\n  --primary-light: ${colors[3]};\n  --primary-dark: ${colors[1]};\n}\n\n/* Tailwind */\ncolors: { primary: { 50: '${colors[4]}', 500: '${colors[2]}', 900: '${colors[0]}' } }`;
+}
+function randomColor(){ document.getElementById('colorPick').value='#'+Math.floor(Math.random()*16777215).toString(16).padStart(6,'0'); genPalette(); }
+genPalette();
+
+// JSON
+function formatJSON(){
+  try{ const obj=JSON.parse(document.getElementById('jsonIn').value); document.getElementById('jsonOut').textContent=JSON.stringify(obj,null,2); document.getElementById('jsonOut').style.color='#06ffa5'; }catch(e){ document.getElementById('jsonOut').textContent='Error: '+e.message; document.getElementById('jsonOut').style.color='#ff3b82'; }
+}
+function minifyJSON(){ try{ const obj=JSON.parse(document.getElementById('jsonIn').value); document.getElementById('jsonOut').textContent=JSON.stringify(obj); }catch(e){ document.getElementById('jsonOut').textContent='Error: '+e.message; } }
+function copyJSON(){ navigator.clipboard.writeText(document.getElementById('jsonOut').textContent); }
+formatJSON();
+
+// Base64
+function encodeB64(){ document.getElementById('b64out').value=btoa(unescape(encodeURIComponent(document.getElementById('b64in').value))); }
+function decodeB64(){ try{ document.getElementById('b64out').value=decodeURIComponent(escape(atob(document.getElementById('b64in').value))); }catch(e){ document.getElementById('b64out').value='Invalid Base64'; } }
+
+// Markdown (simple)
+function renderMD(){
+  let md=document.getElementById('mdIn').value;
+  md=md.replace(/^### (.*$)/gim,'<h3>$1</h3>').replace(/^## (.*$)/gim,'<h2 style="font-size:20px;margin:16px 0 8px">$1</h2>').replace(/^# (.*$)/gim,'<h1 style="font-size:28px;margin-bottom:12px">$1</h1>').replace(/\*\*(.*)\*\*/gim,'<b>$1</b>').replace(/\*(.*)\*/gim,'<i>$1</i>').replace(/`(.*?)`/gim,'<code style="background:var(--bg);padding:2px 6px;border-radius:4px;font-family:JetBrains Mono">$1</code>').replace(/```js([\s\S]*?)```/gim,'<pre style="background:var(--bg);padding:12px;border-radius:8px;overflow:auto;font-family:JetBrains Mono;font-size:12px">$1</pre>').replace(/\[([^\]]+)\]\(([^)]+)\)/gim,'<a href="$2" style="color:var(--accent)">$1</a>').replace(/^> (.*$)/gim,'<blockquote style="border-left:2px solid var(--accent);padding-left:12px;margin:12px 0;color:var(--text2)">$1</blockquote>').replace(/^- (.*$)/gim,'<li style="margin-left:20px">$1</li>').replace(/\n/gim,'<br>');
+  document.getElementById('mdOut').innerHTML=md;
+}
+document.getElementById('mdIn').addEventListener('input', renderMD); renderMD();
+
+// UUID
+function genUUID(){ document.getElementById('uuidOut').value=crypto.randomUUID(); }
+genUUID();
+document.getElementById('hashIn').addEventListener('input', async e=>{
+  const msg=new TextEncoder().encode(e.target.value);
+  const hash=await crypto.subtle.digest('SHA-256',msg);
+  const hashArray=Array.from(new Uint8Array(hash)); const hex=hashArray.map(b=>b.toString(16).padStart(2,'0')).join('');
+  document.getElementById('hashOut').textContent=hex;
+});
+
+// Regex
+function testRegex(){
+  try{
+    const pat=document.getElementById('regexPat').value; const flags=document.getElementById('regexFlags').value; const text=document.getElementById('regexText').value;
+    const re=new RegExp(pat,flags); const matches=[...text.matchAll(re)];
+    if(matches.length===0) document.getElementById('regexOut').innerHTML='<span style="color:var(--text2)">No matches</span>';
+    else{
+      let html=`<span style="color:var(--accent2)">${matches.length} match(es)</span><br><br>`;
+      matches.forEach(m=>{ html+=`<span style="background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.4);padding:2px 6px;border-radius:4px;margin:2px;display:inline-block">${m[0]}</span> `; });
+      document.getElementById('regexOut').innerHTML=html;
+    }
+  }catch(e){ document.getElementById('regexOut').textContent='Invalid regex: '+e.message; }
+}
+['regexPat','regexFlags','regexText'].forEach(id=>document.getElementById(id).addEventListener('input', testRegex)); testRegex();
+
+// Diff
+function checkDiff(){
+  const a=document.getElementById('diffA').value.split('\n'); const b=document.getElementById('diffB').value.split('\n'); let out='';
+  const max=Math.max(a.length,b.length);
+  for(let i=0;i<max;i++){
+    if(a[i]!==b[i]){
+      if(a[i]!==undefined) out+=`- ${a[i]}\n`;
+      if(b[i]!==undefined) out+=`+ ${b[i]}\n`;
+    }else out+=`  ${a[i]||''}\n`;
+  }
+  document.getElementById('diffOut').textContent=out;
+  document.getElementById('diffOut').innerHTML=out.replace(/^-.*$/gm,m=>`<span style="background:rgba(239,68,68,0.15);color:#ff3b82;display:block">${m}</span>`).replace(/^\+.*$/gm,m=>`<span style="background:rgba(6,255,165,0.15);color:#06ffa5;display:block">${m}</span>`);
+}
+</script>
+</body>
+</html>

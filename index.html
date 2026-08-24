@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ritesh — Developer • Builder • Creator</title>
+<meta name="description" content="Ritesh - Full Stack Developer building exciting web experiences. Portfolio with interactive features, games, and tools.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-content">
+    <div class="loader-logo">Ritesh<span>.</span></div>
+    <div class="loader-bar"><div class="fill"></div></div>
+    <p style="margin-top:16px;font-family:JetBrains Mono;font-size:12px;color:#9a9ab0;letter-spacing:1px">LOADING EXCITING FEATURES...</p>
+  </div>
+</div>
+
+<div id="progress"></div>
+<div class="cursor"></div>
+<div class="cursor-dot"></div>
+<canvas id="particle-canvas"></canvas>
+
+<nav>
+  <div class="logo">Ritesh<span>.</span></div>
+  <ul>
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-icon magnetic" id="themeToggle">🌙</button>
+    <a href="features/terminal.html" class="btn-icon magnetic" title="Terminal">>_</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div>
+      <div class="subtitle"><span id="greeting">Hello</span> — I'm Ritesh</div>
+      <h1>
+        <span class="line"><span>Building</span></span>
+        <span class="line"><span>digital <i>experiences</i></span></span>
+        <span class="line"><span>that matter.</span></span>
+      </h1>
+      <p>I'm a <span id="typewriter" style="color:var(--text);font-weight:600;border-right:2px solid var(--accent2);padding-right:4px">Full-Stack Developer</span><br>Obsessed with crafting fast, beautiful, and delightfully interactive products for the web. Currently exploring AI + Web.</p>
+      <div class="hero-ctas">
+        <a href="#work" class="btn btn-primary magnetic">Explore Work →</a>
+        <a href="features/tools.html" class="btn btn-ghost magnetic">Try Tools Lab 🧪</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>50+</strong><span>Projects Built</span></div>
+        <div class="stat"><strong>10k+</strong><span>Lines Shipped</span></div>
+        <div class="stat"><strong>∞</strong><span>Ideas Brewing</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="card-stack">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card">
+          <div class="code-window">
+            <div class="code-header"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca42"></div><span style="margin-left:auto;font-size:10px;opacity:.5">ritesh.js</span></div>
+            <div class="code-line"><span class="num">1</span><span><span class="kw">const</span> ritesh = {</span></div>
+            <div class="code-line"><span class="num">2</span><span>&nbsp;&nbsp;role: <span class="str">"FullStack Dev"</span>,</span></div>
+            <div class="code-line"><span class="num">3</span><span>&nbsp;&nbsp;stack: [<span class="str">"React"</span>, <span class="str">"Node"</span>, <span class="str">"AI"</span>],</span></div>
+            <div class="code-line"><span class="num">4</span><span>&nbsp;&nbsp;passion: <span class="str">"Building cool shit"</span>,</span></div>
+            <div class="code-line"><span class="num">5</span><span>&nbsp;&nbsp;<span class="fn">code</span>: () => {</span></div>
+            <div class="code-line"><span class="num">6</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="str">"⚡ Magic"</span>;</span></div>
+            <div class="code-line"><span class="num">7</span><span>&nbsp;&nbsp;},</span></div>
+            <div class="code-line"><span class="num">8</span><span>&nbsp;&nbsp;available: <span class="kw">true</span></span></div>
+            <div class="code-line"><span class="num">9</span><span>};</span></div>
+            <div class="code-line"><span class="num">10</span><span></span></div>
+            <div class="code-line"><span class="num">11</span><span><span class="kw">export</span> <span class="kw">default</span> ritesh;</span></div>
+            <div style="margin-top:16px;display:flex;gap:8px"><span class="tag">🚀 Open to work</span><span class="tag" style="background:rgba(6,255,165,0.15);color:#06ffa5;border-color:rgba(6,255,165,0.3)">● Online</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="section-head reveal">
+    <span class="eyebrow">Exciting Features Lab</span>
+    <h2>Not just a portfolio.<br><em>A playground of ideas.</em></h2>
+  </div>
+  <div class="grid grid-3">
+    <a href="features/terminal.html" style="text-decoration:none;color:inherit" class="reveal">
+      <div class="feature-card" style="height:100%">
+        <div class="icon" style="background:linear-gradient(135deg,#7c3aed,#3b82ff);color:white">>_</div>
+        <h3>Interactive Terminal</h3>
+        <p>Type commands like a hacker. Try help, projects, skills, whoami, sudo hire-me. Full keyboard navigation.</p>
+        <div style="margin-top:16px"><span class="tag">CLI</span><span class="tag">Fun</span><span class="tag">Easter Eggs</span></div>
+      </div>
+    </a>
+    <a href="features/games.html" style="text-decoration:none;color:inherit" class="reveal">
+      <div class="feature-card" style="height:100%">
+        <div class="icon" style="background:linear-gradient(135deg,#ff3b82,#ff8f3b);color:white">🎮</div>
+        <h3>Arcade Zone</h3>
+        <p>3 mini-games built from scratch: Neon Snake, Memory Matrix, and Type Speed Demon. Beat my high score!</p>
+        <div style="margin-top:16px"><span class="tag">Games</span><span class="tag">Canvas</span><span class="tag">Leaderboard</span></div>
+      </div>
+    </a>
+    <a href="features/tools.html" style="text-decoration:none;color:inherit" class="reveal">
+      <div class="feature-card" style="height:100%">
+        <div class="icon" style="background:linear-gradient(135deg,#06ffa5,#06b6d4);color:black">🧰</div>
+        <h3>Dev Tools Hub</h3>
+        <p>Handy tools I use daily: QR Generator, Password Vault, JSON Formatter, Color Palette, Markdown Preview.</p>
+        <div style="margin-top:16px"><span class="tag">Utilities</span><span class="tag">100% Offline</span><span class="tag">Open Source</span></div>
+      </div>
+    </a>
+    <a href="features/visuals.html" style="text-decoration:none;color:inherit" class="reveal">
+      <div class="feature-card" style="height:100%">
+        <div class="icon" style="background:linear-gradient(135deg,#f59e0b,#ef4444);color:white">📊</div>
+        <h3>Visual Playground</h3>
+        <p>Data viz, skills radar, GitHub contribution graph, 3D cards, particle experiments, fluid simulations.</p>
+        <div style="margin-top:16px"><span class="tag">Charts</span><span class="tag">WebGL</span><span class="tag">Interactive</span></div>
+      </div>
+    </a>
+    <div class="feature-card reveal">
+      <div class="icon" style="background:linear-gradient(135deg,#8b5cf6,#ec4899);color:white">🤖</div>
+      <h3>AI Assistant (Mock)</h3>
+      <p>Ask me anything - it's a smart mock AI that knows everything about my work. Try it in the corner widget!</p>
+      <div style="margin-top:16px"><span class="tag">AI</span><span class="tag">Chat</span><span class="tag">Context-Aware</span></div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="icon" style="background:linear-gradient(135deg,#10b981,#3b82ff);color:white">✨</div>
+      <h3>Secret Features</h3>
+      <p>Konami Code, custom cursor, magnetic buttons, fluid morphing, tilt effects... Explore to find them all.</p>
+      <div style="margin-top:16px"><span class="tag">Konami: ↑↑↓↓←→←→BA</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="section-head reveal">
+    <span class="eyebrow">Selected Work</span>
+    <h2>Crafted with care.<br><em>Shipped with speed.</em></h2>
+  </div>
+  <div class="grid grid-3">
+    <div class="project reveal">
+      <div class="project-img" style="background: radial-gradient(circle at 30% 30%, #7c3aed, #0a0a0f);">⚡<div class="shine"></div></div>
+      <div class="project-body">
+        <h3>Neon Portfolio Engine <span style="font-size:12px">2024</span></h3>
+        <p>A blazing fast portfolio framework with particle systems, custom cursor, and 60fps animations. Zero dependencies.</p>
+        <div style="margin-bottom:14px"><span class="tag">Vanilla JS</span><span class="tag">Canvas API</span><span class="tag">GSAP</span></div>
+        <div class="project-links"><a href="#">Live Demo ↗</a><a href="#">GitHub ↗</a></div>
+      </div>
+    </div>
+    <div class="project reveal">
+      <div class="project-img" style="background: radial-gradient(circle at 70% 30%, #06ffa5, #0a0a0f); color:white">🧠<div class="shine"></div></div>
+      <div class="project-body">
+        <h3>DevTools Superhub</h3>
+        <p>All-in-one toolkit for developers. 15+ tools running 100% in browser, no data leaves your device. PWA enabled.</p>
+        <div style="margin-bottom:14px"><span class="tag">PWA</span><span class="tag">IndexedDB</span><span class="tag">Web Workers</span></div>
+        <div class="project-links"><a href="features/tools.html">Try Now ↗</a><a href="#">Source ↗</a></div>
+      </div>
+    </div>
+    <div class="project reveal">
+      <div class="project-img" style="background: radial-gradient(circle at 30% 70%, #ff3b82, #0a0a0f);">🎮<div class="shine"></div></div>
+      <div class="project-body">
+        <h3>Arcade.js</h3>
+        <p>Retro game engine in < 10kb. Includes Snake, Tetris logic, particle explosions and CRT shader effects.</p>
+        <div style="margin-bottom:14px"><span class="tag">Game Dev</span><span class="tag">Canvas</span><span class="tag">Shaders</span></div>
+        <div class="project-links"><a href="features/games.html">Play ↗</a><a href="#">Code ↗</a></div>
+      </div>
+    </div>
+    <div class="project reveal">
+      <div class="project-img" style="background: radial-gradient(circle at 50% 50%, #3b82ff, #0a0a0f);">📈<div class="shine"></div></div>
+      <div class="project-body">
+        <h3>GitViz — GitHub Visualizer</h3>
+        <p>Visualize your GitHub journey as an interactive 3D galaxy. Contributions become stars. Repos become planets.</p>
+        <div style="margin-bottom:14px"><span class="tag">Three.js</span><span class="tag">GitHub API</span><span class="tag">Data Viz</span></div>
+        <div class="project-links"><a href="features/visuals.html">Explore ↗</a><a href="#">Repo ↗</a></div>
+      </div>
+    </div>
+    <div class="project reveal">
+      <div class="project-img" style="background: radial-gradient(circle at 80% 20%, #f59e0b, #0a0a0f);">💬<div class="shine"></div></div>
+      <div class="project-body">
+        <h3>Terminal Portfolio</h3>
+        <p>Full Linux-like terminal in browser. File system, commands, easter eggs. Hire me via sudo command.</p>
+        <div style="margin-bottom:14px"><span class="tag">Xterm.js</span><span class="tag">FS Mock</span><span class="tag">Fun</span></div>
+        <div class="project-links"><a href="features/terminal.html">Open Terminal ↗</a><a href="#">GitHub ↗</a></div>
+      </div>
+    </div>
+    <div class="project reveal">
+      <div class="project-img" style="background: radial-gradient(circle at 20% 80%, #8b5cf6, #0a0a0f);">🎨<div class="shine"></div></div>
+      <div class="project-body">
+        <h3>Color Lab</h3>
+        <p>Generate perfect palettes, check accessibility, export as CSS/Tailwind. Used by 2k+ designers.</p>
+        <div style="margin-bottom:14px"><span class="tag">Color Science</span><span class="tag">A11y</span><span class="tag">Design</span></div>
+        <div class="project-links"><a href="features/tools.html">Use Tool ↗</a><a href="#">Star ↗</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-head reveal">
+    <span class="eyebrow">Tech Stack</span>
+    <h2>Tools I love.<br><em>Skills I sharpen daily.</em></h2>
+  </div>
+  <div class="skills-wrap">
+    <div>
+      <div class="skill-bar reveal"><div class="top"><span>Frontend — React / Next / Vue</span><span>95%</span></div><div class="track"><div class="fill" data-width="95"></div></div></div>
+      <div class="skill-bar reveal"><div class="top"><span>Backend — Node / Python / Go</span><span>88%</span></div><div class="track"><div class="fill" data-width="88"></div></div></div>
+      <div class="skill-bar reveal"><div class="top"><span>UI/UX — Figma / Framer Motion</span><span>92%</span></div><div class="track"><div class="fill" data-width="92"></div></div></div>
+      <div class="skill-bar reveal"><div class="top"><span>AI / ML — LangChain / Vector DBs</span><span>80%</span></div><div class="track"><div class="fill" data-width="80"></div></div></div>
+      <div class="skill-bar reveal"><div class="top"><span>DevOps — Docker / AWS / Vercel</span><span>85%</span></div><div class="track"><div class="fill" data-width="85"></div></div></div>
+      <div class="skill-bar reveal"><div class="top"><span>Creative — Canvas / WebGL / Shaders</span><span>90%</span></div><div class="track"><div class="fill" data-width="90"></div></div></div>
+    </div>
+    <div class="reveal">
+      <div class="timeline">
+        <div class="tl-item"><div class="date">2024 — Present</div><h3>Senior Frontend Engineer @ Startup</h3><p style="color:var(--text2);font-size:14px;margin-top:6px">Leading design system, shipping AI features to 100k+ users. Performance +40%, DX +100%.</p></div>
+        <div class="tl-item"><div class="date">2022 — 2024</div><h3>Full-Stack Developer @ Agency</h3><p style="color:var(--text2);font-size:14px;margin-top:6px">Built 30+ sites, from e-commerce to SaaS. Learned to ship fast without breaking things.</p></div>
+        <div class="tl-item"><div class="date">2020 — 2022</div><h3>Self-Taught Journey</h3><p style="color:var(--text2);font-size:14px;margin-top:6px">Started coding on a potato laptop. Built clones, broke prod, fell in love with the web.</p></div>
+      </div>
+      <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+        <span class="tag">⚛️ React</span><span class="tag">▲ Next.js</span><span class="tag">🟢 Node</span><span class="tag">🐍 Python</span><span class="tag">🎨 Figma</span><span class="tag">☁️ AWS</span><span class="tag">🐳 Docker</span><span class="tag">🤖 AI</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-head reveal">
+    <span class="eyebrow">Get In Touch</span>
+    <h2>Let's build<br><em>something exciting.</em></h2>
+  </div>
+  <div class="contact-card reveal">
+    <div>
+      <h3 style="font-size:24px;margin-bottom:16px">Have an idea? Let's talk.</h3>
+      <p style="color:var(--text2);margin-bottom:24px">I'm always open to freelance, full-time opportunities, or just a cool collab. Drop a message and I'll reply within hours — not days.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;font-family:JetBrains Mono;font-size:13px">
+        <div>📧 <a href="mailto:ritesh@example.com" style="color:var(--accent2);text-decoration:none">ritesh@example.com</a></div>
+        <div>🐙 <a href="https://github.com/riteshkumarmaurya42-bit" style="color:var(--text);text-decoration:none">github.com/riteshkumarmaurya42-bit</a></div>
+        <div>📍 Remote • India • Open to relocate</div>
+      </div>
+      <div style="margin-top:32px;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;font-family:JetBrains Mono;font-size:12px">
+        <div style="color:var(--accent2);margin-bottom:8px">> status --check</div>
+        <div>✅ Available for new projects</div>
+        <div>✅ Response time: ~2h</div>
+        <div>✅ Let's make something awesome!</div>
+      </div>
+    </div>
+    <form id="contactForm">
+      <div style="display:grid;gap:16px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <input class="input" placeholder="Your name" required>
+          <input class="input" type="email" placeholder="Email" required>
+        </div>
+        <input class="input" placeholder="Project type (e.g. SaaS, Portfolio, AI Tool)">
+        <textarea class="input" placeholder="Tell me about your idea... What are we building?" required></textarea>
+        <button class="btn btn-primary magnetic" style="width:100%;justify-content:center">Send Message — Let's Go 🚀</button>
+        <p style="font-size:11px;color:var(--text2);text-align:center;font-family:JetBrains Mono">No spam. No BS. Just building cool stuff together.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Ritesh — Crafted with ⚡, ☕ and infinite curiosity. <span style="color:var(--accent)">Konami code hidden.</span></div>
+  <div style="display:flex;gap:20px"><a href="features/terminal.html" style="color:inherit;text-decoration:none">Terminal</a><a href="features/games.html" style="color:inherit;text-decoration:none">Games</a><a href="features/tools.html" style="color:inherit;text-decoration:none">Tools</a><a href="https://github.com/riteshkumarmaurya42-bit/Ritesh" style="color:inherit;text-decoration:none">GitHub</a></div>
+</footer>
+
+<!-- AI Widget -->
+<div id="aiWidget" style="position:fixed;bottom:30px;right:30px;z-index:9999">
+  <div id="aiChat" style="display:none;width:340px;background:var(--bg2);border:1px solid var(--border);border-radius:20px;overflow:hidden;backdrop-filter:blur(20px);box-shadow:0 20px 60px rgba(0,0,0,0.4);margin-bottom:12px">
+    <div style="padding:16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+      <div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center">🤖</div><div><div style="font-weight:600;font-size:14px">Ritesh AI</div><div style="font-size:11px;color:var(--accent2);font-family:JetBrains Mono">● Online • Knows everything</div></div></div>
+      <button onclick="document.getElementById('aiChat').style.display='none'" style="background:none;border:none;color:var(--text2);font-size:18px">×</button>
+    </div>
+    <div id="aiMessages" style="height:300px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;font-size:13px">
+      <div style="background:var(--card);padding:10px 14px;border-radius:14px;border-top-left-radius:4px;max-width:85%">Hey! I'm Ritesh's AI twin. Ask me about his skills, projects, or why you should hire him 😉</div>
+    </div>
+    <div style="padding:12px;display:flex;gap:8px;border-top:1px solid var(--border)">
+      <input id="aiInput" class="input" placeholder="Ask something..." style="padding:10px 14px;font-size:13px">
+      <button id="aiSend" class="btn btn-primary" style="padding:10px 16px">↑</button>
+    </div>
+  </div>
+  <button id="aiToggle" class="magnetic" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent4));border:none;color:white;font-size:24px;box-shadow:var(--glow);display:grid;place-items:center">🤖</button>
+</div>
+
+<script src="js/particles.js"></script>
+<script src="js/main.js"></script>
+<script src="js/effects.js"></script>
+<script>
+// PWA Register
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('./sw.js').then(()=>console.log('PWA ready')).catch(()=>{});
+}
+</script>
+<script>
+// AI Widget Logic
+const aiToggle = document.getElementById('aiToggle');
+const aiChat = document.getElementById('aiChat');
+const aiMessages = document.getElementById('aiMessages');
+const aiInput = document.getElementById('aiInput');
+const aiSend = document.getElementById('aiSend');
+aiToggle.addEventListener('click', ()=> aiChat.style.display = aiChat.style.display==='none'?'block':'none');
+function addMsg(text, isUser=false){
+  const div = document.createElement('div');
+  div.style.padding='10px 14px'; div.style.borderRadius='14px'; div.style.maxWidth='85%';
+  div.style.alignSelf = isUser ? 'flex-end' : 'flex-start';
+  div.style.background = isUser ? 'linear-gradient(135deg,var(--accent),var(--accent4))' : 'var(--card)';
+  div.style.color = isUser ? 'white' : 'var(--text)';
+  div.style.borderTopRightRadius = isUser ? '4px' : '14px';
+  div.style.borderTopLeftRadius = isUser ? '14px' : '4px';
+  div.textContent = text;
+  aiMessages.appendChild(div);
+  aiMessages.scrollTop = aiMessages.scrollHeight;
+}
+const responses = {
+  "skills": "Ritesh is a beast at React, Next.js, Node, Python, and loves WebGL & AI. 95% frontend, 88% backend. Basically full-stack wizard 🧙‍♂️",
+  "projects": "He built Neon Portfolio Engine, DevTools Hub (15+ tools), Arcade.js, GitViz 3D GitHub visualizer, and a full terminal portfolio. Check Work section!",
+  "hire": "You should TOTALLY hire him. Fast, creative, ships quality code, great communicator. Available now. Email: ritesh@example.com 🚀",
+  "default": "That's cool! Ritesh is a Full-Stack dev obsessed with building delightful web experiences. Ask me about his skills, projects, or how to hire him!"
+};
+function aiReply(q){
+  q=q.toLowerCase();
+  let r=responses.default;
+  if(q.includes('skill')||q.includes('stack')||q.includes('tech')) r=responses.skills;
+  else if(q.includes('project')||q.includes('work')||q.includes('build')) r=responses.projects;
+  else if(q.includes('hire')||q.includes('contact')||q.includes('job')||q.includes('freelance')) r=responses.hire;
+  else if(q.includes('hello')||q.includes('hi')) r="Hey there! 👋 I'm Ritesh's AI sidekick. What do you wanna know?";
+  else if(q.includes('game')) r="Oh you found the games? Go to Arcade Zone — Snake, Memory Matrix, Typing Test. Try to beat the high score! 🎮";
+  else if(q.includes('konami')) r="Shhh 🤫 You know about Konami Code? ↑↑↓↓←→←→BA — try it on the homepage!";
+  setTimeout(()=>addMsg(r), 600);
+}
+function sendAI(){
+  const v = aiInput.value.trim(); if(!v) return;
+  addMsg(v, true); aiInput.value=''; aiReply(v);
+}
+aiSend.addEventListener('click', sendAI);
+aiInput.addEventListener('keydown', e=>{ if(e.key==='Enter') sendAI(); });
+</script>
+</body>
+</html>

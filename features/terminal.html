@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terminal — Ritesh</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+body { background:#0a0a0f; color:#e0e0e0; font-family:'JetBrains Mono', monospace; cursor:auto; overflow:hidden; }
+.cursor, .cursor-dot { display:none; }
+.terminal-wrap { height:100vh; display:flex; flex-direction:column; }
+.term-header { padding:12px 20px; background:#11111b; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; gap:12px; }
+.term-header .dots { display:flex; gap:6px; }
+.term-header .title { margin-left:16px; font-size:12px; opacity:0.6; }
+.term-body { flex:1; overflow-y:auto; padding:20px; line-height:1.6; font-size:14px; }
+.term-input-line { display:flex; align-items:center; gap:10px; margin-top:12px; }
+.prompt { color:#06ffa5; }
+.prompt span { color:#7c3aed; }
+#cmdInput { background:transparent; border:none; outline:none; color:#fff; font-family:inherit; font-size:14px; flex:1; }
+.cmd { color:#9a9ab0; }
+.out { margin:8px 0 16px 0; }
+.out .highlight { color:#7c3aed; font-weight:bold; }
+.out .green { color:#06ffa5; }
+.out .yellow { color:#fbbf24; }
+.out .red { color:#ff3b82; }
+a { color:#3b82ff; }
+pre { white-space:pre-wrap; }
+.ascii { color:#7c3aed; font-size:10px; line-height:1.1; }
+@media(max-width:600px){ .ascii{font-size:6px} }
+</style>
+</head>
+<body>
+<div class="terminal-wrap">
+  <div class="term-header">
+    <div class="dots"><div style="width:12px;height:12px;border-radius:50%;background:#ff5f57"></div><div style="width:12px;height:12px;border-radius:50%;background:#ffbd2e"></div><div style="width:12px;height:12px;border-radius:50%;background:#28ca42"></div></div>
+    <div class="title">ritesh@portfolio: ~ — zsh — 120×40</div>
+    <div style="margin-left:auto;display:flex;gap:10px"><a href="../index.html" style="text-decoration:none;font-size:12px;border:1px solid rgba(255,255,255,0.1);padding:4px 10px;border-radius:20px;color:#9a9ab0">← Back to Portfolio</a></div>
+  </div>
+  <div class="term-body" id="termBody">
+    <div class="ascii">
+ ██████╗ ██╗████████╗███████╗███████╗██╗  ██╗
+ ██╔══██╗██║╚══██╔══╝██╔════╝██╔════╝██║  ██║
+ ██████╔╝██║   ██║   █████╗  ███████╗███████║
+ ██╔══██╗██║   ██║   ██╔══╝  ╚════██║██╔══██║
+ ██║  ██║██║   ██║   ███████╗███████║██║  ██║
+ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝
+    </div>
+    <div style="margin:12px 0;color:#9a9ab0">Welcome to Ritesh's interactive terminal v2.0.0 — Type <span style="color:#06ffa5">help</span> to start. Try to find easter eggs!</div>
+    <div id="output"></div>
+    <div class="term-input-line">
+      <span class="prompt">ritesh@portfolio<span>:~$</span></span>
+      <input id="cmdInput" autofocus autocomplete="off" spellcheck="false">
+    </div>
+  </div>
+</div>
+
+<script>
+const output = document.getElementById('output');
+const input = document.getElementById('cmdInput');
+const body = document.getElementById('termBody');
+
+const files = {
+  'about.txt': 'I am Ritesh, Full-Stack Developer passionate about building delightful web experiences. Based in India, working worldwide.',
+  'skills.json': JSON.stringify({frontend:["React","Next.js","Vue","Tailwind"], backend:["Node.js","Python","Go","Postgres"], creative:["WebGL","Canvas","Framer Motion"], ai:["LangChain","OpenAI","Vector DBs"]}, null, 2),
+  'projects.md': '# Projects\n- Neon Portfolio Engine\n- DevTools Superhub\n- Arcade.js\n- GitViz\n- Terminal Portfolio\n- Color Lab',
+  'contact.vcf': 'Email: ritesh@example.com\nGitHub: riteshkumarmaurya42-bit\nLocation: Remote / India',
+  'secret.txt': '🎉 You found a secret file! The Konami code is ↑↑↓↓←→←→BA on homepage. Also try: sudo hire-me'
+};
+
+const commands = {
+  help: `Available commands:
+  <span class="green">about</span>       — Who is Ritesh?
+  <span class="green">skills</span>      — Tech stack
+  <span class="green">projects</span>    — What I built
+  <span class="green">contact</span>     — Get in touch
+  <span class="green">ls</span>          — List files
+  <span class="green">cat &lt;file&gt;</span>   — Read file (try cat secret.txt)
+  <span class="green">whoami</span>      — Who are you?
+  <span class="green">clear</span>       — Clear terminal
+  <span class="green">echo &lt;text&gt;</span>  — Echo text
+  <span class="green">sudo hire-me</span>— Hire Ritesh 😎
+  <span class="green">cowsay &lt;text&gt;</span>— Cow says!
+  <span class="green">matrix</span>      — Enter the matrix
+  <span class="green">theme &lt;dark|light|neon&gt;</span> — Change theme
+  <span class="green">play snake</span>  — Go to arcade
+  <span class="green">rm -rf /</span>    — Don't try 😅
+`,
+  about: `<span class="highlight">Ritesh — Developer • Builder • Creator</span>
+Passionate Full-Stack Developer with 4+ years of shipping fast, beautiful web apps.
+Loves: Clean code, delightful UX, performance, and building in public.
+Currently: Exploring AI + Web, building tools that developers actually want to use.
+Motto: "Build cool shit that matters."
+
+Type <span class="green">skills</span> to see stack.`,
+  skills: `<span class="yellow">⚡ TECH STACK</span>
+Frontend: React, Next.js, Vue, TypeScript, Tailwind, Framer Motion
+Backend: Node.js, Python, Go, Postgres, Redis, GraphQL
+Tools: Docker, AWS, Vercel, Git, Figma, WebGL
+AI: LangChain, OpenAI API, Vector DBs, RAG
+Creative: Canvas API, Three.js, Shaders, Generative Art
+
+Proficiency: <span class="green">███████████████░░ 95% Frontend</span>`,
+  projects: `<span class="yellow">🚀 SELECTED WORK</span>
+1. <span class="highlight">Neon Portfolio Engine</span> — Blazing fast portfolio framework
+2. <span class="highlight">DevTools Superhub</span> — 15+ offline dev tools (PWA)
+3. <span class="highlight">Arcade.js</span> — Retro game engine <10kb
+4. <span class="highlight">GitViz</span> — GitHub as 3D galaxy
+5. <span class="highlight">Terminal Portfolio</span> — You are here!
+6. <span class="highlight">Color Lab</span> — Palette generator for designers
+
+Visit homepage for live demos.`,
+  contact: `<span class="yellow">📬 CONTACT</span>
+Email: <a href="mailto:ritesh@example.com">ritesh@example.com</a>
+GitHub: <a href="https://github.com/riteshkumarmaurya42-bit">riteshkumarmaurya42-bit</a>
+Portfolio: <a href="../index.html">../index.html</a>
+Location: Remote • India
+Status: <span class="green">● Available for new projects</span>
+Response: ~2 hours
+
+Try: <span class="green">sudo hire-me</span>`,
+  ls: `about.txt  skills.json  projects.md  contact.vcf  secret.txt  README.md`,
+  whoami: `You are a curious visitor exploring Ritesh's terminal. You seem like someone who appreciates good craftsmanship. 👾`,
+};
+
+function print(html){
+  const div = document.createElement('div');
+  div.className='out';
+  div.innerHTML=html;
+  output.appendChild(div);
+  body.scrollTop = body.scrollHeight;
+}
+
+function handleCmd(raw){
+  const cmd = raw.trim();
+  if(!cmd) return;
+  print(`<span class="prompt">ritesh@portfolio<span>:~$</span></span> <span class="cmd">${cmd}</span>`);
+  const lower = cmd.toLowerCase();
+
+  if(lower==='clear' || lower==='cls'){ output.innerHTML=''; return; }
+  if(lower.startsWith('cat ')){
+    const file = lower.split(' ')[1];
+    if(files[file]) print(`<pre>${files[file]}</pre>`);
+    else print(`<span class="red">cat: ${file}: No such file</span><br>Try: ${Object.keys(files).join(', ')}`);
+    return;
+  }
+  if(lower.startsWith('echo ')){ print(cmd.slice(5)); return; }
+  if(lower.startsWith('cowsay ')){
+    const text = cmd.slice(7);
+    print(`<pre> _${'_'.repeat(text.length)}_
+< ${text} >
+ -${'-'.repeat(text.length)}-
+        \\   ^__^
+         \\  (oo)\\_______
+            (__)\\       )\\/\\
+                ||----w |
+                ||     ||</pre>`);
+    return;
+  }
+  if(lower==='sudo hire-me'){
+    print(`<span class="green">🚀 Hiring sequence initiated...</span>
+Checking Ritesh's availability... <span class="green">✅ Available</span>
+Checking skills... <span class="green">✅ Senior-level</span>
+Checking vibe... <span class="green">✅ Excellent</span>
+
+<span class="highlight">SUCCESS!</span> Ritesh would love to work with you.
+📧 Email: ritesh@example.com
+💬 Or use the contact form on homepage.
+
+<span class="yellow">Thanks for using sudo responsibly!</span>`);
+    return;
+  }
+  if(lower==='matrix'){
+    print(`<span class="green">Entering Matrix...</span>`);
+    document.body.style.background='black';
+    let count=0;
+    const interval = setInterval(()=>{
+      const span = document.createElement('span');
+      span.textContent = String.fromCharCode(33+Math.random()*94) + ' ';
+      span.style.color = Math.random()>0.5 ? '#06ffa5' : '#7c3aed';
+      span.style.position='fixed';
+      span.style.left=Math.random()*100+'vw';
+      span.style.top=Math.random()*100+'vh';
+      span.style.fontSize='12px';
+      span.style.pointerEvents='none';
+      document.body.appendChild(span);
+      setTimeout(()=>span.remove(), 2000);
+      count++;
+      if(count>150){ clearInterval(interval); document.body.style.background='#0a0a0f'; print(`<span class="green">Welcome back to reality.</span>`); }
+    }, 30);
+    return;
+  }
+  if(lower.startsWith('theme ')){
+    const t = lower.split(' ')[1];
+    if(t==='neon'){ document.body.style.filter='hue-rotate(90deg)'; print(`<span class="green">Theme set to NEON 🌈</span>`); }
+    else if(t==='dark'){ document.body.style.filter=''; print(`<span class="green">Theme: Dark (default)</span>`); }
+    else if(t==='light'){ document.body.style.filter='invert(1) hue-rotate(180deg)'; print(`<span class="green">Theme: Light (inverted)</span>`); }
+    else print(`Themes: dark, light, neon`);
+    return;
+  }
+  if(lower==='play snake'){ print(`Redirecting to Arcade...`); setTimeout(()=>location.href='games.html', 800); return; }
+  if(lower==='rm -rf /'){ print(`<span class="red">Nice try 😅 Permission denied. This is Ritesh's portfolio, not your prod server.</span>`); return; }
+  if(lower==='pwd'){ print(`/home/ritesh/portfolio`); return; }
+  if(lower==='date'){ print(new Date().toString()); return; }
+  if(commands[lower]){ print(commands[lower]); return; }
+  print(`<span class="red">Command not found: ${cmd}</span><br>Type <span class="green">help</span> for available commands.`);
+}
+
+input.addEventListener('keydown', (e)=>{
+  if(e.key==='Enter'){ handleCmd(input.value); input.value=''; }
+});
+body.addEventListener('click', ()=>input.focus());
+print(commands.help);
+</script>
+</body>
+</html>

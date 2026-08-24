@@ -1,0 +1,82 @@
+{
+  "portfolio": "Ritesh",
+  "version": "2.0.0",
+  "tagline": "Building digital experiences that matter",
+  "features": [
+    {
+      "id": "terminal",
+      "name": "Interactive Terminal",
+      "description": "Linux-like terminal in browser with easter eggs",
+      "path": "features/terminal.html",
+      "tags": ["CLI", "Fun", "Easter Eggs"],
+      "commands": ["help", "about", "skills", "sudo hire-me"]
+    },
+    {
+      "id": "games",
+      "name": "Arcade Zone",
+      "description": "3 mini-games built from scratch",
+      "path": "features/games.html",
+      "tags": ["Games", "Canvas", "Leaderboard"],
+      "games": ["Neon Snake", "Memory Matrix", "Type Demon"]
+    },
+    {
+      "id": "tools",
+      "name": "Dev Tools Hub",
+      "description": "9 offline dev tools",
+      "path": "features/tools.html",
+      "tags": ["Utilities", "Offline", "PWA"],
+      "tools": ["QR Generator", "Password Generator", "Color Palette", "JSON Formatter", "Base64", "Markdown Preview", "UUID", "Regex Tester", "Text Diff"]
+    },
+    {
+      "id": "visuals",
+      "name": "Visual Playground",
+      "description": "Data viz and creative coding experiments",
+      "path": "features/visuals.html",
+      "tags": ["Charts", "WebGL", "Interactive"],
+      "experiments": ["Skills Radar", "Fluid Simulation", "GitHub Contributions", "Tilt Cards"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Neon Portfolio Engine",
+      "year": 2024,
+      "description": "Blazing fast portfolio framework with particle systems",
+      "stack": ["Vanilla JS", "Canvas API", "GSAP"],
+      "emoji": "⚡",
+      "links": { "demo": "#", "github": "#" }
+    },
+    {
+      "name": "DevTools Superhub",
+      "description": "All-in-one toolkit for developers, 15+ tools offline",
+      "stack": ["PWA", "IndexedDB", "Web Workers"],
+      "emoji": "🧰"
+    },
+    {
+      "name": "Arcade.js",
+      "description": "Retro game engine in <10kb",
+      "stack": ["Game Dev", "Canvas", "Shaders"],
+      "emoji": "🎮"
+    }
+  ],
+  "skills": {
+    "frontend": 95,
+    "backend": 88,
+    "uiux": 92,
+    "ai": 80,
+    "devops": 85,
+    "creative": 90
+  },
+  "easterEggs": [
+    "Konami Code: ↑↑↓↓←→←→BA",
+    "Cmd+K Command Palette",
+    "sudo hire-me in terminal",
+    "cat secret.txt",
+    "Confetti on button clicks",
+    "Fluid simulation drag"
+  ],
+  "contact": {
+    "email": "ritesh@example.com",
+    "github": "https://github.com/riteshkumarmaurya42-bit/Ritesh",
+    "status": "Available for new projects"
+  }
+}
