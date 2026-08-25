@@ -271,3 +271,49 @@ footer { padding:60px 8%; border-top:1px solid var(--border); display:flex; just
   0% { filter:hue-rotate(0deg); }
   100% { filter:hue-rotate(360deg); }
 }
+
+/* ---------- Accessibility ---------- */
+
+/* Keyboard users should always see where they are. */
+:focus-visible { outline: 2px solid var(--accent2); outline-offset: 3px; border-radius: 4px; }
+
+/* Skip to content link — invisible until focused. */
+.skip-link {
+  position: fixed; top: -60px; left: 16px; z-index: 100001;
+  background: var(--accent); color: #fff; padding: 10px 18px;
+  border-radius: 0 0 12px 12px; text-decoration: none; font-weight: 600;
+  font-size: 13px; transition: top .2s;
+}
+.skip-link:focus { top: 0; }
+
+/* Touch devices (no fine pointer): restore the native cursor. */
+@media (hover: none), (pointer: coarse) {
+  body, a, button { cursor: auto; }
+  .cursor, .cursor-dot { display: none; }
+}
+
+/* Respect users who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  body, a, button { cursor: auto; }
+  .cursor, .cursor-dot { display: none; }
+  .reveal { opacity: 1; transform: none; }
+  .hero h1 .line span { transform: none; animation: none; }
+}
+
+/* ---------- Toast notifications (replaces alert()) ---------- */
+.toast {
+  position: fixed; bottom: 30px; left: 50%; transform: translate(-50%, 20px);
+  background: var(--bg2); color: var(--text);
+  border: 1px solid var(--border); border-left: 3px solid var(--accent2);
+  border-radius: 12px; padding: 14px 22px; z-index: 1000000;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+  opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s;
+}
+.toast.visible { opacity: 1; transform: translate(-50%, 0); }
