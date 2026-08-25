@@ -1,179 +1,184 @@
-# ⚡ Ritesh — Interactive Portfolio & Exciting Features Lab
+# ⚡ Ritesh — Interactive Portfolio & Features Lab
 
 > **Not just a portfolio. A playground of ideas.**
 
-[![Deploy](https://img.shields.io/badge/Deploy-GitHub%20Pages-7c3aed?style=for-the-badge)](https://riteshkumarmaurya42-bit.github.io/Ritesh/)
-[![MIT License](https://img.shields.io/badge/License-MIT-06ffa5?style=for-the-badge)](LICENSE)
-[![PWA Ready](https://img.shields.io/badge/PWA-Ready-3b82ff?style=for-the-badge)](manifest.json)
-[![Vanilla JS](https://img.shields.io/badge/Built%20with-Vanilla%20JS-fbbf24?style=for-the-badge)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![CI](https://github.com/riteshkumarmaurya42-bit/Ritesh/actions/workflows/ci.yml/badge.svg)](https://github.com/riteshkumarmaurya42-bit/Ritesh/actions/workflows/ci.yml)
+[![Deploy](https://github.com/riteshkumarmaurya42-bit/Ritesh/actions/workflows/deploy.yml/badge.svg)](https://github.com/riteshkumarmaurya42-bit/Ritesh/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-7c3aed.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-06ffa5.svg)](CONTRIBUTING.md)
 
-This is **awesome to do this** — taken to the next level. I transformed a simple repo into a full-blown interactive experience with games, tools, terminal, visualizations, and secret easter eggs.
+<p align="center">
+  <img src="assets/banner.webp" alt="Ritesh — interactive portfolio banner" width="720">
+</p>
 
-**Live Demo:** https://riteshkumarmaurya42-bit.github.io/Ritesh/  
-**Try:** Press `Cmd+K` for command palette or `↑ ↑ ↓ ↓ ← → ← → B A` for a surprise!
+A personal portfolio taken further: four hand-built feature pages — a browser
+terminal, an arcade, a dev-tools hub, and a visual playground — plus PWA support
+and a CLI resume. All in **vanilla JS with zero runtime dependencies** and no
+build step.
 
----
-
-## ✨ What's Inside? (Exciting Features)
-
-### 🎨 Core Portfolio
-- **Particle Network Background** — Interactive canvas with mouse repulsion physics
-- **Custom Cursor & Magnetic Buttons** — Fluid cursor that reacts to interactive elements
-- **Glassmorphism + Neumorphism UI** — Modern design with blur, gradients, and glow
-- **Typewriter + Scroll Reveals** — Smooth animations powered by IntersectionObserver
-- **Dark/Light Theme** — Persisted with localStorage
-- **PWA Support** — Installable, offline-ready with Service Worker
-
-### 🧪 Features Lab (4 Dedicated Pages)
-
-#### 1. `>_ Interactive Terminal` — [Open](features/terminal.html)
-A full Linux-like terminal in the browser:
-- Commands: `help`, `about`, `skills`, `projects`, `ls`, `cat secret.txt`, `cowsay`, `matrix`, `sudo hire-me`
-- File system mock, ascii art, easter eggs
-- Try `rm -rf /` — I dare you 😅
-
-#### 2. 🎮 Arcade Zone — [Play](features/games.html)
-Three games built from scratch with Canvas API:
-- **Neon Snake** — Glow effects, wrap-around walls, high score
-- **Memory Matrix** — Emoji matching, move counter, best score
-- **Type Speed Demon** — Real WPM, accuracy, code snippets
-
-#### 3. 🧰 Dev Tools Hub — [Use Tools](features/tools.html)
-9 tools that run 100% offline (no tracking):
-- QR Generator, Password Vault (strength meter), Color Palette Generator
-- JSON Formatter, Base64, Markdown Live Preview
-- UUID/Hash, Regex Tester, Text Diff
-- Built with Web APIs: Canvas, Crypto, Clipboard
-
-#### 4. 📊 Visual Playground — [Explore](features/visuals.html)
-Data viz & creative coding:
-- Skills Radar (Chart.js), Commit Graph, Tech Doughnut
-- GitHub Contributions mock (371 cells)
-- **Fluid Simulation** — Particle velocity fields, mouse interaction
-- 3D Tilt Cards with perspective
-
-### 🤖 Bonus Features
-- **AI Assistant Widget** — Mock AI that knows everything about me (bottom-right)
-- **Command Palette** — `Cmd+K` / `Ctrl+K` to navigate anywhere
-- **Konami Code** — `↑ ↑ ↓ ↓ ← → ← → B A` triggers confetti & rainbow mode
-- **Contact Form** — With playful micro-interactions
-- **404 Page** — Lost in space with particle background
-- **CLI Tool** — `node bin/ritesh-cli.js` — Interactive terminal resume!
+**Live site:** https://riteshkumarmaurya42-bit.github.io/Ritesh/
+**Try this:** press <kbd>Cmd</kbd>+<kbd>K</kbd> for the command palette, or
+`↑ ↑ ↓ ↓ ← → ← → B A` for a surprise.
 
 ---
 
-## 🚀 Quick Start
+## ✨ What's inside
+
+### 🎨 Core portfolio (`index.html`)
+- **Particle-network background** — canvas physics with mouse repulsion
+- **Custom cursor & magnetic buttons** — pointer devices only; touch users get native cursors
+- **Glassmorphism UI** — blur, gradients, glow, typewriter, scroll reveals
+- **Dark / light theme** — persisted in `localStorage`
+- **Installable PWA** — service worker with offline fallback + app shortcuts
+- **Accessibility** — skip link, keyboard navigation, `prefers-reduced-motion` support, ARIA landmarks
+
+### 🧪 Features Lab (4 pages)
+
+| Page | What it does |
+| --- | --- |
+| [`>_ Interactive Terminal`](features/terminal.html) | Linux-like terminal: `help`, `skills`, `cat secret.txt`, `cowsay`, `matrix`, `sudo hire-me`… |
+| [🎮 Arcade Zone](features/games.html) | 3 canvas games from scratch: Neon Snake, Memory Matrix, Type Speed Demon |
+| [🧰 Dev Tools Hub](features/tools.html) | 9 offline tools: QR, passwords, colors, JSON, Base64, Markdown, UUID/hash, regex, diff |
+| [📊 Visual Playground](features/visuals.html) | Skills radar, commit graphs, contribution heatmap, fluid simulation, 3D tilt cards |
+
+### 🤖 Extras
+- **Demo assistant widget** — tiny offline keyword bot, honestly labeled as a demo
+- **Command palette** — <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>K</kbd>, fully keyboard-navigable
+- **Konami code** — confetti + rainbow mode
+- **CLI resume** — `node bin/ritesh-cli.js` (also `--json`, `--version`, `--help`)
+- **Custom 404** — lost in space
+
+---
+
+## 🚀 Quick start
 
 ```bash
-# Clone
 git clone https://github.com/riteshkumarmaurya42-bit/Ritesh.git
 cd Ritesh
 
-# Run locally (any static server)
-npx serve . -l 3000
-# or
-python3 -m http.server 3000
+# Any static server works
+npm start          # npx serve . -l 3000
+# or: python3 -m http.server 3000
 
-# Try CLI
+# Terminal resume
 node bin/ritesh-cli.js
+
+# Health checks (same ones CI runs)
+npm run lint       # JS syntax, JSON, internal links, SW precache, manifest
+npm test           # site-integrity + CLI test suite (node:test, no deps)
 ```
 
-Open http://localhost:3000 — Enjoy!
+### npm scripts
+
+| Script | What it does |
+| --- | --- |
+| `npm start` / `npm run dev` | Serve the site locally on :3000 |
+| `npm run lint` | Dependency-free repo checks (`scripts/check.js`) |
+| `npm test` | Node built-in test runner over `tests/` |
+| `npm run icons` | Regenerate PWA PNG icons from scratch (`scripts/generate-icons.js`, no deps) |
+| `npm run check` | lint + test in one go |
 
 ---
 
-## 📁 Project Structure
+## 📁 Project structure
 
 ```
 Ritesh/
-├── index.html              # Main portfolio (hero, features, work, skills, contact)
-├── css/
-│   └── style.css           # Design system — glassmorphism, animations, responsive
-├── js/
-│   ├── main.js             # Cursor, scroll, typewriter, theme, easter eggs
-│   ├── particles.js        # Network particle system with mouse interaction
-│   └── effects.js          # Confetti, Cmd+K palette, extra magic
+├── index.html               # Portfolio home (hero, features, work, skills, contact)
 ├── features/
-│   ├── terminal.html       # Interactive terminal portfolio
-│   ├── tools.html          # 9 dev tools (100% offline)
-│   ├── games.html          # 3 canvas games
-│   └── visuals.html        # Charts, fluid sim, tilt effects
-├── bin/
-│   └── ritesh-cli.js       # Node.js CLI resume
-├── .github/workflows/
-│   └── deploy.yml          # GitHub Pages auto-deploy
-├── manifest.json           # PWA manifest
-├── sw.js                   # Service Worker (offline cache)
-├── 404.html                # Custom 404 with particles
-├── package.json
-└── README.md               # You are here
+│   ├── terminal.html        # Browser terminal
+│   ├── tools.html           # 9 offline dev tools
+│   ├── games.html           # 3 canvas games
+│   └── visuals.html         # Charts, fluid sim, tilt cards
+├── css/style.css            # Design system + a11y utilities
+├── js/
+│   ├── main.js              # Theme, cursor, reveals, typewriter, toasts, easter eggs
+│   ├── particles.js         # Particle-network background
+│   ├── effects.js           # Command palette + confetti
+│   └── ai-widget.js         # Demo assistant
+├── bin/ritesh-cli.js        # Node CLI resume (--json / --version / --help)
+├── scripts/
+│   ├── check.js             # Lint: syntax, links, SW, manifest, quality gates
+│   └── generate-icons.js    # Zero-dep PNG icon generator
+├── tests/                   # node:test suites (site integrity + CLI)
+├── data/projects.json       # Feature + project data (single source for tools)
+├── .github/
+│   ├── workflows/ci.yml     # Lint + test + served smoke test
+│   └── workflows/deploy.yml # GitHub Pages deploy (lint → test → icons → deploy)
+├── manifest.json            # PWA manifest (shortcuts, maskable icon)
+├── sw.js                    # Service worker (network-first navigations)
+├── 404.html                 # Custom 404
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── SECURITY.md
+└── LICENSE                  # MIT
 ```
 
 ---
 
-## 🎯 Tech Highlights
+## 🎨 Make it yours
 
-- **Zero Frameworks** — Pure Vanilla JS for max performance
-- **Canvas API** — Particle systems, fluid sim, games
-- **Web APIs Used:** Clipboard, Crypto (UUID & SHA-256), IntersectionObserver, Service Worker, localStorage
-- **Chart.js** — For radar, line, doughnut visualizations
-- **QRCode.js** — Offline QR generation
-- **Performance:** 60fps animations, <100ms interactions, Lighthouse 95+
-- **Accessibility:** Keyboard nav, semantic HTML, ARIA where needed
+Forking this for your own portfolio? The main things to change:
+
+| What | Where |
+| --- | --- |
+| Name, role, bio | `index.html`, `bin/ritesh-cli.js` (`info` object) |
+| Email *(currently the `ritesh@example.com` placeholder — replace it!)* | `index.html`, `js/main.js`, `js/effects.js`, `bin/ritesh-cli.js`, `features/terminal.html`, `data/projects.json`, `package.json` — `npm run lint` will list every file still containing the placeholder |
+| GitHub username / links | same files + `manifest.json` isn't username-specific |
+| Projects & skills | `index.html` (work/skills sections), `data/projects.json` |
+| Terminal commands & files | `features/terminal.html` (`files` and `commands` objects) |
+| Colors & fonts | `css/style.css` (`:root` variables) |
+| Site URL (canonical/OG tags) | each page's `<head>`, `robots.txt`, `sitemap.xml` |
+
+CI will warn you (non-fatally) about leftover placeholder emails until you've
+replaced them all.
 
 ---
 
-## 🎮 Easter Eggs Checklist
+## ⚙️ Tech notes & constraints
 
-- [ ] Try `Cmd+K` command palette
-- [ ] Konami Code: `↑ ↑ ↓ ↓ ← → ← → B A`
-- [ ] Type `sudo hire-me` in terminal
-- [ ] `cat secret.txt` in terminal
+- **Zero runtime dependencies** — everything except the Visual Playground's
+  Chart.js (CDN) is hand-rolled vanilla JS. No build step, no bundler.
+- **Web APIs used** — Canvas, Clipboard, Crypto (UUID/SHA-256), IntersectionObserver,
+  Service Worker, `localStorage`, Web Animations.
+- **Performance** — throttled scroll handlers, particles pause on hidden tabs and
+  scale with viewport, DPR capped at 2.
+- **Accessibility** — skip link, `<main>` landmark, labeled controls, visible focus,
+  toasts instead of `alert()`, full `prefers-reduced-motion` support.
+- **The assistant is a demo** — it's keyword matching, not an LLM, and it's labeled that way.
+
+---
+
+## 🎮 Easter-egg checklist
+
+- [ ] <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>K</kbd> command palette
+- [ ] Konami code: `↑ ↑ ↓ ↓ ← → ← → B A`
+- [ ] `sudo hire-me` in the terminal
+- [ ] `cat secret.txt` in the terminal
 - [ ] Click any primary button for confetti
-- [ ] Drag mouse in fluid simulation
-- [ ] Beat Snake high score
-- [ ] Ask AI about Konami code
-- [ ] Try `rm -rf /` in terminal
-- [ ] Find the custom cursor!
+- [ ] Drag your mouse in the fluid simulation
+- [ ] Beat the Snake high score
+- [ ] Ask the assistant about the Konami code
+- [ ] Try `rm -rf /` in the terminal (if you dare)
+- [ ] Find the custom cursor
 
 ---
 
 ## 🤝 Contributing
 
-This is my personal portfolio, but feel free to fork and make it yours!
+This is a personal portfolio, but ideas and fixes are welcome — especially new
+tools and games. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, conventions,
+and the PR checklist. Good first ideas: a JWT decoder, an image compressor,
+sound effects via Web Audio, a Three.js scene.
 
-1. Fork the repo
-2. Create feature branch: `git checkout -b feature/awesome`
-3. Commit: `git commit -m 'Add awesome feature'`
-4. Push: `git push origin feature/awesome`
-5. Open PR
+## 📬 Contact
 
-Ideas welcome: more games, more tools, WebGL shaders, multiplayer!
+I'm open to freelance and full-time work.
 
----
-
-## 📬 Contact & Hire Me
-
-I'm **available for freelance & full-time** — let's build something exciting!
-
-- Email: `ritesh@example.com`
 - GitHub: [@riteshkumarmaurya42-bit](https://github.com/riteshkumarmaurya42-bit)
-- Portfolio: [Live Site](https://riteshkumarmaurya42-bit.github.io/Ritesh/)
-- Terminal: `sudo hire-me`
-
-> Response time: ~2 hours. No spam, no BS, just building cool stuff.
-
----
+- Portfolio: [live site](https://riteshkumarmaurya42-bit.github.io/Ritesh/)
+- Or type `hire` in the CLI / `sudo hire-me` in the terminal 🙂
 
 ## 📜 License
 
-MIT — Feel free to use, remix, and ship!
-
----
-
-### 🌟 If you like this, please star the repo!
-
-Built with ⚡, ☕ and infinite curiosity by **Ritesh**.
-
-> "This is awesome to do this." — Now it's *really* awesome.
-
+[MIT](LICENSE) — use it, remix it, ship it. If it helps you, a ⭐ is appreciated.

@@ -1,13 +1,19 @@
 {
   "name": "ritesh-portfolio",
-  "version": "2.0.0",
-  "description": "⚡ Exciting interactive portfolio with games, dev tools, terminal, and visual playground",
-  "main": "index.html",
+  "version": "2.1.0",
+  "description": "Interactive developer portfolio with games, dev tools, a browser terminal, and a visual playground — built with zero frameworks.",
+  "private": true,
+  "bin": {
+    "ritesh": "bin/ritesh-cli.js"
+  },
   "scripts": {
     "dev": "npx serve . -l 3000",
-    "build": "echo 'No build needed - vanilla JS magic ✨'",
-    "preview": "npx serve . -l 3000",
-    "lint": "echo 'LGTM!'"
+    "start": "npx serve . -l 3000",
+    "lint": "node scripts/check.js",
+    "test": "node --test",
+    "icons": "node scripts/generate-icons.js",
+    "check": "npm run lint && npm test",
+    "build": "npm run lint && echo 'Static site — no build step needed.'"
   },
   "keywords": [
     "portfolio",
@@ -17,7 +23,8 @@
     "terminal",
     "visualization",
     "pwa",
-    "vanilla-js"
+    "vanilla-js",
+    "zero-dependencies"
   ],
   "author": "Ritesh <ritesh@example.com>",
   "license": "MIT",
@@ -28,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/riteshkumarmaurya42-bit/Ritesh/issues"
   },
-  "homepage": "https://riteshkumarmaurya42-bit.github.io/Ritesh"
+  "homepage": "https://riteshkumarmaurya42-bit.github.io/Ritesh",
+  "engines": {
+    "node": ">=18"
+  }
 }

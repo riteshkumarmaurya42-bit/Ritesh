@@ -1,16 +1,48 @@
 {
   "name": "Ritesh — Developer Portfolio",
   "short_name": "Ritesh",
-  "description": "Interactive portfolio with exciting features, games, and dev tools",
-  "start_url": "/",
+  "description": "Interactive portfolio with games, dev tools, a browser terminal, and a visual playground.",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0a0a0f",
   "theme_color": "#7c3aed",
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>",
+      "src": "assets/icons/icon-192.png",
       "sizes": "192x192",
-      "type": "image/svg+xml"
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Open Terminal",
+      "short_name": "Terminal",
+      "url": "features/terminal.html",
+      "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Play Games",
+      "short_name": "Arcade",
+      "url": "features/games.html",
+      "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Dev Tools",
+      "short_name": "Tools",
+      "url": "features/tools.html",
+      "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }
