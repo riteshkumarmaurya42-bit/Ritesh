@@ -6,6 +6,8 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-06ffa5?style=for-the-badge)](LICENSE)
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-3b82ff?style=for-the-badge)](manifest.json)
 [![Vanilla JS](https://img.shields.io/badge/Built%20with-Vanilla%20JS-fbbf24?style=for-the-badge)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Tests](https://img.shields.io/badge/tests-52%20passing-06ffa5?style=for-the-badge)](test/xray.test.js)
+[![Node](https://img.shields.io/badge/Node-%E2%89%A518-3b82ff?style=for-the-badge)](package.json)
 
 This is **awesome to do this** — taken to the next level. I transformed a simple repo into a full-blown interactive experience with games, tools, terminal, visualizations, and secret easter eggs.
 
@@ -52,6 +54,66 @@ Data viz & creative coding:
 - **Fluid Simulation** — Particle velocity fields, mouse interaction
 - 3D Tilt Cards with perspective
 
+#### 5. 🩻 Repo X-Ray — [Analyze a repo](features/xray.html) ⭐ NEW
+
+**The one that is actually useful.** Paste any GitHub repository and get a health
+report in about four seconds — the things a star count will never tell you:
+
+| What it measures | Why it matters |
+|---|---|
+| 🚌 **Bus factor** | How many people must leave before the project stalls. A bus factor of 1 is a red flag hiding behind 30k stars. |
+| 🕰️ **Commit chronotype** | A real punch card of *when* work happens, using each commit's own UTC offset — so "3am" means 3am for the human who typed it. Nocturnal? Nine-to-five? Weekend passion project? |
+| 📊 **Gini coefficient** | Contribution inequality. 300 contributors means nothing if one person wrote 95% of the code. |
+| 📦 **Release cadence** | Average gap between releases, and how long since the last one. |
+| ⚖️ **Legal & governance** | License, CONTRIBUTING, code of conduct, issue templates. |
+| 🎯 **Weighted grade** | Six dimensions → one A+…F grade, with a plain-English verdict. |
+
+Plus: **head-to-head comparison** of any two repos, Markdown export for PR comments,
+JSON download, and shareable deep links (`?repo=owner/name`).
+
+Everything runs **in your browser** against the public GitHub API — no server, no
+tracking, no key required. Results are cached in `localStorage` for 30 minutes so
+you do not burn the anonymous rate limit.
+
+```bash
+# The same engine also ships as a zero-dependency CLI
+node bin/xray.js facebook/react
+node bin/xray.js sveltejs/svelte --compare vuejs/core
+node bin/xray.js astral-sh/ruff --markdown > ruff-health.md
+```
+
+```
+┌─ 🩻  REPO X-RAY ────────────────────────────────────────────────────────┐
+│ █▀▄   ▄     sindresorhus/got                                             │
+│ █▀▄  ▀█▀    🌐 Human-friendly and powerful HTTP request                  │
+│ █▄▀   ▀     83.0/100 · strong                                            │
+├──────────────────────────────────────────────────────────────────────────┤
+│ Popularity    ███████████████████████░░░░░  83  15%                      │
+│ Activity      ██████████████████████████░░  93  25%                      │
+│ Maintenance   ████████████████████████████  98  20%                      │
+│ Community     ██████████████████████░░░░░░  78  15%                      │
+│ Documentation ████████████████████████░░░░  86  15%                      │
+│ Resilience    █████████░░░░░░░░░░░░░░░░░░░  32  10%                      │
+├──────────────────────────────────────────────────────────────────────────┤
+│ Sun                   ▒ ░      3                                         │
+│ Mon        ░   ░▒░░ ░▒ ░   ▒  13                                         │
+│ Tue                    ▒▒▓▒░  12                                         │
+│ Wed      ▓▓ ░ ░░  █▒▒ ▓░ ░░   34                                         │
+│ Thu  ░░     ▒  ░░▒░▒▒░ ░ ▒    21                                         │
+│     ┬──┬──┬──┬──┬──┬──┬──┬──                                             │
+│     0     6     12    18      hour of day                                │
+├──────────────────────────────────────────────────────────────────────────┤
+│ 🚌 Bus factor of 2 — just 2 people carry half the work across 100        │
+│ 🌙 32% of commits happen on weekends. Somebody has a passion project.    │
+│ ✨ Zero open issues at 14,934 stars — impressively tidy.                 │
+└──────────────────────────────────────────────────────────────────────────┘
+```
+
+You can also run it **inside the browser terminal** — try `xray facebook/react`
+in [the terminal](features/terminal.html). Same engine, three front-ends.
+
+> 💡 Set `GITHUB_TOKEN` to lift the CLI rate limit from 60 to 5,000 requests/hour.
+
 ### 🤖 Bonus Features
 - **AI Assistant Widget** — Mock AI that knows everything about me (bottom-right)
 - **Command Palette** — `Cmd+K` / `Ctrl+K` to navigate anywhere
@@ -59,6 +121,7 @@ Data viz & creative coding:
 - **Contact Form** — With playful micro-interactions
 - **404 Page** — Lost in space with particle background
 - **CLI Tool** — `node bin/ritesh-cli.js` — Interactive terminal resume!
+- **Repo X-Ray CLI** — `npm run xray -- facebook/react` — Repo health in your terminal
 
 ---
 
@@ -74,8 +137,12 @@ npx serve . -l 3000
 # or
 python3 -m http.server 3000
 
-# Try CLI
-node bin/ritesh-cli.js
+# Try the CLIs
+node bin/ritesh-cli.js              # interactive resume
+node bin/xray.js facebook/react     # 🩻 repo health report
+
+# Run the test suite (no install needed)
+npm test
 ```
 
 Open http://localhost:3000 — Enjoy!
@@ -92,16 +159,21 @@ Ritesh/
 ├── js/
 │   ├── main.js             # Cursor, scroll, typewriter, theme, easter eggs
 │   ├── particles.js        # Network particle system with mouse interaction
-│   └── effects.js          # Confetti, Cmd+K palette, extra magic
+│   ├── effects.js          # Confetti, Cmd+K palette, extra magic
+│   └── xray-engine.js      # 🩻 Scoring engine — shared by web, CLI & terminal
 ├── features/
-│   ├── terminal.html       # Interactive terminal portfolio
+│   ├── terminal.html       # Interactive terminal (now with a real `xray` command)
 │   ├── tools.html          # 9 dev tools (100% offline)
 │   ├── games.html          # 3 canvas games
-│   └── visuals.html        # Charts, fluid sim, tilt effects
+│   ├── visuals.html        # Charts, fluid sim, tilt effects
+│   └── xray.html           # 🩻 Repo X-Ray — GitHub health analyzer
 ├── bin/
-│   └── ritesh-cli.js       # Node.js CLI resume
-├── .github/workflows/
-│   └── deploy.yml          # GitHub Pages auto-deploy
+│   ├── ritesh-cli.js       # Node.js CLI resume
+│   └── xray.js             # 🩻 Repo X-Ray CLI (zero dependencies)
+├── test/
+│   └── xray.test.js        # 52 tests for the scoring engine
+├── .github/
+│   └── ci-workflow.yml.example  # Copy to workflows/ci.yml to enable CI
 ├── manifest.json           # PWA manifest
 ├── sw.js                   # Service Worker (offline cache)
 ├── 404.html                # Custom 404 with particles
@@ -118,6 +190,8 @@ Ritesh/
 - **Web APIs Used:** Clipboard, Crypto (UUID & SHA-256), IntersectionObserver, Service Worker, localStorage
 - **Chart.js** — For radar, line, doughnut visualizations
 - **QRCode.js** — Offline QR generation
+- **Isomorphic module** — `js/xray-engine.js` is one UMD file running in the browser, in Node, and inside the web terminal
+- **Tested** — 52 unit tests via `node:test`, no test framework installed
 - **Performance:** 60fps animations, <100ms interactions, Lighthouse 95+
 - **Accessibility:** Keyboard nav, semantic HTML, ARIA where needed
 
@@ -135,6 +209,9 @@ Ritesh/
 - [ ] Ask AI about Konami code
 - [ ] Try `rm -rf /` in terminal
 - [ ] Find the custom cursor!
+- [ ] Run `xray facebook/react` in the terminal
+- [ ] X-ray your own repo and check your bus factor 😬
+- [ ] Hit `surprise me 🎲` on the X-Ray page
 
 ---
 

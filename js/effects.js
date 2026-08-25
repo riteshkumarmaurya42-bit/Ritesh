@@ -56,6 +56,7 @@ const paletteList = document.getElementById('paletteList');
 
 const paletteCommands=[
   {label:'Go to Home', action:()=>location.href='#home', icon:'🏠'},
+  {label:'Repo X-Ray — analyze a GitHub repo', action:()=>location.href='features/xray.html', icon:'🩻'},
   {label:'Open Terminal', action:()=>location.href='features/terminal.html', icon:'>_'},
   {label:'Open Tools Hub', action:()=>location.href='features/tools.html', icon:'🧰'},
   {label:'Play Games', action:()=>location.href='features/games.html', icon:'🎮'},
