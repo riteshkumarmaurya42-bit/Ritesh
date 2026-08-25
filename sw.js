@@ -1,5 +1,5 @@
 // Service Worker - Ritesh Portfolio PWA
-const CACHE = 'ritesh-v2';
+const CACHE = 'ritesh-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -9,7 +9,9 @@ const ASSETS = [
   './features/terminal.html',
   './features/tools.html',
   './features/games.html',
-  './features/visuals.html'
+  './features/visuals.html',
+  './features/xray.html',
+  './js/xray-engine.js'
 ];
 
 self.addEventListener('install', e => {

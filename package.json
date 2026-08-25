@@ -7,7 +7,9 @@
     "dev": "npx serve . -l 3000",
     "build": "echo 'No build needed - vanilla JS magic ✨'",
     "preview": "npx serve . -l 3000",
-    "lint": "echo 'LGTM!'"
+    "lint": "node --check js/xray-engine.js && node --check bin/xray.js && echo 'LGTM!'",
+    "test": "node --test test/*.test.js",
+    "xray": "node bin/xray.js"
   },
   "keywords": [
     "portfolio",
@@ -17,7 +19,12 @@
     "terminal",
     "visualization",
     "pwa",
-    "vanilla-js"
+    "vanilla-js",
+    "repo-health",
+    "github-api",
+    "cli",
+    "bus-factor",
+    "code-quality"
   ],
   "author": "Ritesh <ritesh@example.com>",
   "license": "MIT",
@@ -28,5 +35,12 @@
   "bugs": {
     "url": "https://github.com/riteshkumarmaurya42-bit/Ritesh/issues"
   },
-  "homepage": "https://riteshkumarmaurya42-bit.github.io/Ritesh"
+  "homepage": "https://riteshkumarmaurya42-bit.github.io/Ritesh",
+  "bin": {
+    "xray": "./bin/xray.js",
+    "ritesh": "./bin/ritesh-cli.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
 }
